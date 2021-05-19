@@ -1,0 +1,10 @@
+{% extends "game/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form class="container" method = "POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+  <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+
+    </form>
+{% endblock %}
