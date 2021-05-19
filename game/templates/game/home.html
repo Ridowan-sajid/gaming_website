@@ -1,0 +1,26 @@
+{% extends "game/base.html" %}
+{% block content %}
+<div class="row container mx-auto">
+      <div class="col-12 col-sm-12 col-lg-9 col-md-9">
+
+       {% for post in posts %}
+       <div class="border border-grey mt-5 row">
+        <div class="col-lg-4 col-md-4 col-12">
+         <img src="{{ post.feature_photo.url }}"  class="my-4 img-thumbnail">
+        </div>
+           <div class="col-12 col-lg-8 col-md-8">
+           <h3>{{ post.title }}</h3>
+           <p>{{ post.time }}</p>
+           <p>{{ post.type }}</p>
+           <p>{{ post.details|truncatewords:12 }}</p>
+          </div>
+           <button type="button" class="m-2 col-4 col-md-3 col-lg-2 btn btn-inline btn-outline-success"><a style="color:black;text-decoration:none" href="{% url 'game_details' post.pk %}">Read more</a></button>
+
+       </div>
+       {% endfor %}
+      </div>
+    <div class="col-12 col-sm-12 col-lg-3 col-md-3">
+      Hello
+    </div>
+</div>
+{% endblock %}
