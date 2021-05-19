@@ -1,10 +1,15 @@
 {% extends "game/base.html" %}
 {% load static %}
 {% block content %}
-<div class="container mt-4 text-center">
+<div class="container mt-4 text-center" style="height: 130vh;">
  <h1 class="text-center">{{ post.title }}</h1>
  <img src="{{ post.feature_photo.url }}" class="my-4 col-6 rounded col-10 col-lg-6 col-md-6 col-sm-6">
- <p style="text-align: left;">{{ post.details }}</p>
+ <p style="text-align: left; font-size:1.2rem;">{{ post.details }}</p>
+
+ <h2 style="text-align: left; ">Comment:</h2>
+ <div class="line" style="height: 3px;width: 8rem; background-color: blue;">
+  
+ </div>
 </div>
 
 {% endblock %}
