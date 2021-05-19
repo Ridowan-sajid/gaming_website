@@ -1,6 +1,6 @@
 from urllib import request
 from django.shortcuts import render
-from game.models import Game
+from game.models import Game,GameImage
 
 
 def home(request):
@@ -13,8 +13,10 @@ def home(request):
 
 def gamingPost(request,pk):
     post=Game.objects.get(id=pk)
+    images=GameImage.objects.all()
     context={
-        "post":post
+        "post":post,
+        "images":images
     }
 
     return render(request,"game/game_details.html",context)

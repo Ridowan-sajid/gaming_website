@@ -17,7 +17,6 @@ class Game(models.Model):
     def __str__(self):
         return self.title
 
-
 class GameImage(models.Model):
     game = models.ForeignKey(Game, default=None, on_delete=models.CASCADE)
     images = models.ImageField(upload_to='images')
