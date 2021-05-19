@@ -13,17 +13,19 @@ class Game(models.Model):
     type=models.CharField(max_length=20,choices=TYPE)
     time = datetime.datetime.now()
     feature_photo=models.ImageField(default="default.jpg",upload_to="images")
+    images1 = models.ImageField(upload_to="images")
+    images2 = models.ImageField(upload_to="images")
 
     def __str__(self):
         return self.title
 
-class GameImage(models.Model):
-    game = models.ForeignKey(Game, default=None, on_delete=models.CASCADE)
-    images = models.ImageField(upload_to='images')
-
-    def __str__(self):
-        return self.game.title
-
-
+# class GameImage(models.Model):
+#     game = models.ForeignKey(Game, default=None, on_delete=models.CASCADE)
+#     images = models.ImageField(upload_to='images')
+#
+#     def __str__(self):
+#         return self.game.title
+#
+#
 
 

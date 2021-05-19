@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from game.models import Game,GameImage
+from game.models import Game
 
 admin.site.register(Game)
-admin.site.register(GameImage)
+# admin.site.register(GameImage)
