@@ -1,7 +1,7 @@
 {% extends "game/base.html" %}
 {% load static %}
 {% block content %}
-<div class="container mt-4 text-center" style="height: 130vh;">
+<div class="container mt-4 text-center">
  <h1 class="text-center">{{ post.title }} ({{ post.type }})</h1>
  <img src="{{ post.feature_photo.url }}" class="my-4 col-6 rounded col-10 col-lg-6 col-md-6 col-sm-6">
  <p style="text-align: left; font-size:1.2rem;">{{ post.details }}</p>
@@ -17,12 +17,25 @@
 
  <h2 style="text-align: left; ">Comment:</h2>
  <div class="line" style="height: 3px;width: 8rem; background-color: blue;"></div>
- <form class="container" method = "POST">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-  <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+     {% if user.is_authenticated %}
+        <form style="text-align:left" class="" method = "POST">
+            {% csrf_token %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="bAVJwxhq8XPy46Inay6jYCiywLV2J9zao4yPb70sOEXkgnhuv5jzUa1axPIasxsT">
+            <label for="id_game_comment" class="form-label">Game comment:</label>
+            <input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
+            <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+        </form>
+        {% endif %}
 
-    </form>
+    {% for com in comment %}
+    {% if com.game.title == post.title %}
+    <div class="container mt-4 border border-grey" >
+        <p style="text-align:left">{{ com.commenter }}: {{ com.time }}</p>
+    <p style="text-align:left" class="text-success h6"> {{ com.game_comment }}</p>
+    </div>
+        {% endif %}
+    {% endfor %}
+
 </div>
 
 

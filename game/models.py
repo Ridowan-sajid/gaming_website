@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 
+
 class Game(models.Model):
     TYPE = (
         ('Offline', 'Offline'),
@@ -27,11 +28,12 @@ class Game(models.Model):
 #         return self.game.title
 
 class Comment(models.Model):
-    game=models.ForeignKey(Game, default=None, on_delete=models.CASCADE)
-    game_comment=models.CharField(max_length=150)
+    game=models.ForeignKey(Game, on_delete=models.CASCADE)
+    game_comment=models.CharField(max_length=200, null=False,blank=False)
     time = datetime.datetime.now()
     id=models.AutoField(primary_key=True)
     owner=models.ForeignKey('self',on_delete=models.CASCADE,blank=True,null=True)
+    commenter = models.CharField(max_length=20,blank=True,null=True)
 
     def __str__(self):
         return self.game.title
