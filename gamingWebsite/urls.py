@@ -4,6 +4,7 @@ from game import views
 from django.conf import settings
 from django.conf.urls.static import static
 from user import views as user_view
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 
@@ -11,5 +12,7 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('detail/<int:pk>',views.gamingPost,name='game_details'),
     path('register/',user_view.register,name='register'),
+    path('login/',auth_views.LoginView.as_view(template_name='user/login.html'),name='login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name='user/home.html'),name='logout'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

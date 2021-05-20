@@ -16,10 +16,14 @@
 
 
  <h2 style="text-align: left; ">Comment:</h2>
- <div class="line" style="height: 3px;width: 8rem; background-color: blue;">
+ <div class="line" style="height: 3px;width: 8rem; background-color: blue;"></div>
+ <form class="container" method = "POST">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+  <button type="submit" class="mt-2 btn btn-primary">Submit</button>
 
-  
- </div>
+    </form>
 </div>
+
 
 {% endblock %}

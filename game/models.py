@@ -25,7 +25,14 @@ class Game(models.Model):
 #
 #     def __str__(self):
 #         return self.game.title
-#
-#
 
+class Comment(models.Model):
+    game=models.ForeignKey(Game, default=None, on_delete=models.CASCADE)
+    game_comment=models.CharField(max_length=150)
+    time = datetime.datetime.now()
+    id=models.AutoField(primary_key=True)
+    owner=models.ForeignKey('self',on_delete=models.CASCADE,blank=True,null=True)
+
+    def __str__(self):
+        return self.game.title
 
