@@ -1,5 +1,4 @@
 {% extends "game/base.html" %}
-{% load static %}
 {% block content %}
 <div class="container mt-4 text-center">
  <h1 class="text-center">{{ post.title }} ({{ post.type }})</h1>
@@ -15,13 +14,14 @@
 <!-- {% endfor %}-->
 
 
- <h2 style="text-align: left; ">Comment:</h2>
+ <h2 style="text-align: left;" class="text-grey" >Comment:</h2>
  <div class="line" style="height: 3px;width: 8rem; background-color: blue;"></div>
      {% if user.is_authenticated %}
         <form style="text-align:left" class="" method = "POST">
             {% csrf_token %}
+<!--{{ comment_form }}-->
             <input type="hidden" name="csrfmiddlewaretoken" value="bAVJwxhq8XPy46Inay6jYCiywLV2J9zao4yPb70sOEXkgnhuv5jzUa1axPIasxsT">
-            <label for="id_game_comment" class="form-label">Game comment:</label>
+            <label for="id_game_comment" class="form-label">Create a comment:</label>
             <input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
             <button type="submit" class="mt-2 btn btn-primary">Submit</button>
         </form>

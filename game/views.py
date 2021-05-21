@@ -2,11 +2,16 @@ from urllib import request
 from django.shortcuts import render
 from game.models import Game,Comment
 from game.forms import GameForm
+from django.core.paginator import Paginator
 
 def home(request):
     posts = Game.objects.all()
+    paginator = Paginator(posts,10)
+    page_number = request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
     context = {
-        "posts": posts
+        "posts" : posts,
+        "page_obj" : page_obj,
     }
 
     return render(request, "game/home.html", context)

@@ -1,5 +1,5 @@
+from django.utils import timezone
 from django.db import models
-import datetime
 
 
 class Game(models.Model):
@@ -12,7 +12,7 @@ class Game(models.Model):
     title=models.CharField(max_length=120)
     details=models.TextField(blank=False,null=False)
     type=models.CharField(max_length=20,choices=TYPE)
-    time = datetime.datetime.now()
+    time = models.DateTimeField(default=timezone.now)
     feature_photo=models.ImageField(default="default.jpg",upload_to="images")
     images1 = models.ImageField(upload_to="images")
     images2 = models.ImageField(upload_to="images")
@@ -30,7 +30,7 @@ class Game(models.Model):
 class Comment(models.Model):
     game=models.ForeignKey(Game, on_delete=models.CASCADE)
     game_comment=models.CharField(max_length=200, null=False,blank=False)
-    time = datetime.datetime.now()
+    time = models.DateTimeField(default=timezone.now)
     id=models.AutoField(primary_key=True)
     owner=models.ForeignKey('self',on_delete=models.CASCADE,blank=True,null=True)
     commenter = models.CharField(max_length=20,blank=True,null=True)
