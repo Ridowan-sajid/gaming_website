@@ -8,10 +8,21 @@ class Game(models.Model):
         ('Online', 'Online'),
         ('Offline & Online', 'Offline & Online'),
     )
+    GENRE = (
+        ('Action', 'Action'),
+        ('Action-adventure', 'Action-adventure'),
+        ('Adventure', 'Adventure'),
+        ('Role-playing','Role-playing'),
+        ('Sports', 'Sports'),
+        ('Strategy', 'Strategy'),
+        ('Simulation', 'Simulation'),
+    )
+
 
     title=models.CharField(max_length=120)
     details=models.TextField(blank=False,null=False)
     type=models.CharField(max_length=20,choices=TYPE)
+    genre=models.CharField(max_length=20,choices = GENRE)
     time = models.DateTimeField(default=timezone.now)
     feature_photo=models.ImageField(default="default.jpg",upload_to="images")
     images1 = models.ImageField(upload_to="images")

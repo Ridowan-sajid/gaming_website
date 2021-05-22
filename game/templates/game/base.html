@@ -21,7 +21,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">AG gaming</a>
+      <a class="navbar-brand" href="{% url 'home' %}">AG gaming</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
@@ -47,7 +47,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Hidden brand</a>
+      <a class="navbar-brand" href="{% url 'home' %}">AG gaming</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
@@ -80,15 +80,15 @@
     {% block content %}
 
     {% endblock %}
-  <footer class="d-flex justify-content-between align-items-center text-white" style=" width: 100%;height: 10vh;background-color: blueviolet; margin-top:5rem">
-    <div style="margin-left: 2rem">
-    <p>AG gaming Copyright&copy;2021</p>
-    </div>
-<div style="margin-right: 2rem">
-  <a href="https://www.facebook.com/Android-game-282945238748489"><i style="font-size:2rem" class="fab fa-facebook-square"></i></a>
-  <i style="font-size:2rem" class="fab fa-twitter-square"></i>
-  <i style="font-size:2rem" class="fab fa-instagram-square"></i>
-</div>
+  <footer class="footer d-flex justify-content-between align-items-center text-white" style="width: 100%; height: 12vh;background-color: black; margin-top:5rem">
+      <div style="margin-left: 2rem; padding-right: 3rem; padding-top: 1.5rem;">
+      <p>AG gaming Copyright&copy;2021</p>
+      </div>
+      <div style="margin-right: 2rem;">
+        <a href="https://www.facebook.com/Android-game-282945238748489"><i style="font-size:2rem;color:white;" class="fab fa-facebook-square"></i></a>
+        <i style="font-size:2rem;color:white;" class="fab fa-twitter-square"></i>
+        <i style="font-size:2rem;color:white;" class="fab fa-instagram-square"></i>
+      </div>
   </footer>
 
     <script src="{% static 'game/all.min.js' %}"></script>
