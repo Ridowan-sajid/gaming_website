@@ -16,6 +16,31 @@ def home(request):
 
     return render(request, "game/home.html", context)
 
+
+def action(request):
+    posts = Game.objects.all()
+    paginator = Paginator(posts,10)
+    page_number = request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
+    context = {
+        "posts" : posts,
+        "page_obj" : page_obj,
+    }
+
+    return render(request, "game/action.html", context)
+
+def action_adventure(request):
+    posts = Game.objects.all()
+    paginator = Paginator(posts,10)
+    page_number = request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
+    context = {
+        "posts" : posts,
+        "page_obj" : page_obj,
+    }
+
+    return render(request, "game/action-adventure.html", context)
+
 def gamingPost(request,pk):
     post=Game.objects.get(id=pk)
     comment=Comment.objects.all()

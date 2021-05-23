@@ -21,7 +21,7 @@
         <form style="text-align:left" class="" method = "POST">
             {% csrf_token %}
 <!--            {{ comment_form }}-->
-            <label class="form-control" for="id_game_comment">Create a comment:</label><input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
+            <label  for="id_game_comment">Create a comment:</label><input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
             <button type="submit" class="mt-2 btn btn-primary">Submit</button>
         </form>
         {% endif %}
