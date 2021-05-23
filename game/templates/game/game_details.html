@@ -1,5 +1,6 @@
 {% extends "game/base.html" %}
 {% block content %}
+
 <div class="container mt-4 text-center">
  <h1 class="text-center">{{ post.title }} ({{ post.type }})</h1>
  <h4 class="text-center text-primary">{{ post.genre }}</h4>
@@ -21,7 +22,7 @@
         <form style="text-align:left" class="" method = "POST">
             {% csrf_token %}
 <!--            {{ comment_form }}-->
-            <label  for="id_game_comment">Create a comment:</label><input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
+            <label for="id_game_comment">Create a comment:</label><input class="form-control" type="text" name="game_comment" maxlength="200" required="" id="id_game_comment">
             <button type="submit" class="mt-2 btn btn-primary">Submit</button>
         </form>
         {% endif %}

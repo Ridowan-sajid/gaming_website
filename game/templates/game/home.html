@@ -1,5 +1,6 @@
 {% extends "game/base.html" %}
 {% block content %}
+
 <div class="row container mx-auto">
       <div class="col-12 col-sm-12 col-lg-9 col-md-9">
 
@@ -64,4 +65,19 @@
     {% endfor %}
     </div>
 </div>
+<script>
+  const searchForm = document.querySelector('.search-input');
+  const posts = document.querySelectorAll('.title');
+
+  searchForm.addEventListener('keyup',(e)=>{
+    Array.from(posts).forEach((post)=>{
+      if(post.textContent.toLowerCase().includes(searchForm.value.toLowerCase())){
+        post.parentElement.parentElement.style.display='block';
+      }
+      else{
+        post.parentElement.parentElement.style.display='none';
+      }
+    })
+  })
+</script>
 {% endblock %}
