@@ -1,69 +1,72 @@
 {% extends "game/base.html" %}
 {% block content %}
 <div class="row container mx-auto">
-      <div class="col-12 col-sm-12 col-lg-9 col-md-9">
+    <div class="col-12 col-sm-12 col-lg-9 col-md-9">
 
-       {% for post in page_obj %}
-          {% if post.genre == 'Action' %}
-       <div class="border border-grey mt-5 row post">
-        <div class="col-lg-4 col-md-4 col-12">
-         <img src="{{ post.feature_photo.url }}"  class="my-4 img-thumbnail">
+        {% for post in page_obj %}
+        {% if post.genre == 'Action' %}
+        <div class="border border-grey mt-5 row post">
+            <div class="col-lg-4 col-md-4 col-12">
+                <img src="{{ post.feature_photo.url }}" class="my-4 img-thumbnail">
+            </div>
+            <div class="col-12 col-lg-8 col-md-8" style="margin-top:1rem">
+                <h3 class="title">{{ post.title }} </h3>
+                <p>{{ post.genre }}</p>
+                <p>{{ post.time }}</p>
+                <p>{{ post.type }}</p>
+                <p>{{ post.details|truncatewords:12 }}</p>
+            </div>
+            <button type="button" class="m-2 col-4 col-md-3 col-lg-2 btn btn-inline btn-outline-success"><a
+                    style="color:black;text-decoration:none" href="{% url 'game_details' post.pk %}">Read more</a>
+            </button>
         </div>
-        <div class="col-12 col-lg-8 col-md-8" style="margin-top:1rem">
-           <h3 class="title">{{ post.title }} </h3>
-           <p>{{ post.genre }}</p>
-           <p>{{ post.time }}</p>
-           <p>{{ post.type }}</p>
-           <p>{{ post.details|truncatewords:12 }}</p>
-          </div>
-           <button type="button" class="m-2 col-4 col-md-3 col-lg-2 btn btn-inline btn-outline-success"><a style="color:black;text-decoration:none" href="{% url 'game_details' post.pk %}">Read more</a></button>
-       </div>
-          {% endif %}
-       {% endfor %}
-   <div class="mt-4">
-      {% if page_obj.has_previous %}
-        <a class="btn btn-outline-primary mb-4" href="?page=1">First</a>
-        <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% endif %}
-
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
         {% endif %}
-      {% endfor %}
+        {% endfor %}
+        <div class="mt-4">
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-primary mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
 
-      {% if page_obj.has_next %}
-        <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+
+        </div>
 
     </div>
-
-      </div>
     <div class="col-12 col-sm-12 col-lg-3 col-md-3 mt-5">
-      <!-- <h4>Follow us:</h4>
-      <div style="margin-right: 2rem;">
-        <a href="https://www.facebook.com/Android-game-282945238748489"><i style="font-size:2rem;color:white;" class="fab fa-facebook-square"></i></a>
-        <i style="font-size:2rem;color:white;" class="fab fa-twitter-square"></i>
-        <i style="font-size:2rem;color:white;" class="fab fa-instagram-square"></i>
-      </div> -->
+        <!-- <h4>Follow us:</h4>
+        <div style="margin-right: 2rem;">
+          <a href="https://www.facebook.com/Android-game-282945238748489"><i style="font-size:2rem;color:white;" class="fab fa-facebook-square"></i></a>
+          <i style="font-size:2rem;color:white;" class="fab fa-twitter-square"></i>
+          <i style="font-size:2rem;color:white;" class="fab fa-instagram-square"></i>
+        </div> -->
 
 
         <h4 class="text-danger">Popular games review:</h4>
-    {% for post in posts %}
+        {% for post in posts %}
         {% if post.title == "The Walking Dead season 2" or post.title == "GTA San Andreas" %}
-       <div class="mt-5 row">
-        <div class="col-lg-4 col-md-4 col-4">
-         <img src="{{ post.feature_photo.url }}"  class="my-1 img-thumbnail">
+        <div class="mt-5 row">
+            <div class="col-lg-4 col-md-4 col-4">
+                <img src="{{ post.feature_photo.url }}" class="my-1 img-thumbnail">
+            </div>
+            <div class="col-12 col-lg-8 col-md-8">
+                <a class="text-secondary" style="color:black;text-decoration:none"
+                   href="{% url 'game_details' post.pk %}">{{ post.title }}</a>
+            </div>
         </div>
-           <div class="col-12 col-lg-8 col-md-8">
-               <a class="text-secondary" style="color:black;text-decoration:none" href="{% url 'game_details' post.pk %}">{{ post.title }}</a>
-           </div>
-       </div>
         {% endif %}
-    {% endfor %}
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
