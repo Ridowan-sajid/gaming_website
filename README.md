@@ -1,5 +1,15 @@
 # gaming_website
+**Frontend design:**
 
+* Html
+* Css
+* Bootstrap
+* JavaScript
+
+**Backend:**
+
+* Python
+* Django
 
 # Front view of the website
 # 
